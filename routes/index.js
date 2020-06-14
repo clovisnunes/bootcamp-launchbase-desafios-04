@@ -10,4 +10,12 @@ router.get('/', function(req, res, next) {
   res.render('layout.njk');
 });
 
+router.get('/card', function(req, res, next) {
+  res.render('card.njk');
+});
+
+router.get('/cadastro', function(req, res, next) {
+  res.render('form.njk');
+});
+
 module.exports = router;
