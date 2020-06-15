@@ -8,9 +8,14 @@
 
         <div class="form-container">
 
-            <form action="">
+            <form action="/professor" method="post">
 
                 <h1>Cadastro do professor</h1>
+
+                <div class="field">
+                    <label for="img_url">Avatar url</label>
+                    <input type="text" id="img_url" name="img_url" />
+                </div>
 
                 <div class="field">
                     <label for="nome">Nome completo</label>
@@ -25,6 +30,7 @@
                 <div class="field">
                     <label for="escolaridade">Grau de escolaridade</label>
                     <select name="escolaridade" id="escolaridade">
+                        <option value="0">Selecione o grau de escolaridade</option>
                         <option value="1">Ensino Médio Completo</option>
                         <option value="2">Ensino Superior Completo</option>
                         <option value="3">Mestrado</option>
