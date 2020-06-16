@@ -1,7 +1,7 @@
 function age (dateString) {
     var birthday = +new Date(dateString);
     return ~~((Date.now() - birthday) / (31557600000));
-}
+};
 
 function graduation (num) {
     switch(num) {
@@ -13,7 +13,10 @@ function graduation (num) {
             return "Mestrado";
         case "4":
             return "Doutorado";
+        default:
+            return "";
     }
-}
+};
 
-export default { age, graduation };
+
+module.exports = { age, graduation };

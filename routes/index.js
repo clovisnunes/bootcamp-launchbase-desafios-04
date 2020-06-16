@@ -2,6 +2,7 @@ var express = require('express');
 var nunjucks = require('nunjucks')
 var router = express.Router();
 const fs = require('fs');
+const utils = require('../controllers/utils');
 
 const { Validator } = require('node-input-validator');
 
@@ -46,6 +47,12 @@ router.post('/professor', function(req, res, next) {
     area,
   } = req.body;
 
+  const dateCriacao = new Date();
+  const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: 'numeric' }) 
+  const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(dateCriacao ) 
+
+  const dateCriacaoForm = `${day}/${month}/${year }`; 
+
   const professor = {
     img_url,
     nome,
@@ -53,6 +60,7 @@ router.post('/professor', function(req, res, next) {
     escolaridade,
     tipo,
     area,
+    dateCriacaoForm,
   };
 
   
@@ -66,6 +74,28 @@ router.post('/professor', function(req, res, next) {
   fs.writeFileSync('./data/professors.json', jsonString);
 
   res.send('Cadastrado');
+});
+
+router.get('/professor/:id', function(req, res) {
+  const {id} = req.params;
+
+  const data = fs.readFileSync('./data/professors.json');
+  const profArray = JSON.parse(data);
+
+  if(id > profArray.length - 1) {
+    res.sendStatus(404);
+  }
+
+  const prof = profArray[id];
+
+  const serialProf = {
+    acompanhamento: prof.area.split(',').map(elem => elem.trim()),
+    idade: utils.age(prof.nasc),
+    graduacao: utils.graduation(prof.escolaridade),
+    ...prof,
+  }
+
+  res.render('card.njk', serialProf);
 });
 
 module.exports = router;
