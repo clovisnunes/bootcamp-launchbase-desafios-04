@@ -21,6 +21,23 @@
   border-top-left-radius: 15px;
 }
 
+.bottom-right {
+  position: absolute;
+  bottom: 8px;
+  right: 16px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+}
+
+.container a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+
 .bott {
   display: flex;
   align-items: baseline;

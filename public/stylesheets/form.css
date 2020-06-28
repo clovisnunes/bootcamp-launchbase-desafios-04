@@ -46,6 +46,10 @@
     color: #6C6C80;
 }
 
+div#id_oculto {
+  display: none;
+}
+
 form .field select {
   -webkit-appearance: none;
   -moz-appearance: none;

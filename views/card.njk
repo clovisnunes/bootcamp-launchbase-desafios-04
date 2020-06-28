@@ -7,7 +7,11 @@
     {% block content %}
 
         <div class="card">
-            <img src={{img_url}} alt="professor" />
+            <div class="container">
+                <img src={{img_url}} alt="professor" />
+                <div class="bottom-right"><a href={{ "/editar/" + id }}>&#128393;</a></div>
+            </div>
+            
             <h1>{{nome}} - {{idade}}</h1>
             <ul>
                 {% for disc in acompanhamento %}
