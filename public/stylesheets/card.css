@@ -49,7 +49,8 @@
 
 .bott {
   display: flex;
-  align-items: baseline;
+  align-items: center;
+  justify-content: center;
   background: #f05373;
   margin-top: 8px;
   border-bottom-left-radius: 15px;
@@ -57,18 +58,14 @@
 }
 
 .bott-item {
-  width: 125px;
+  width: 135px;
+  height: 64px;
   font-weight: bold;
+  font-size: 14px;
   color: #fff;
-  height: 70px;
   display : flex;
   align-items : center;
   justify-content: center;
-}
-
-
-.center-item {
-  width: 200px;
 }
 
 .bott .bott-item + .bott-item {

@@ -17,6 +17,20 @@
   background: #f9f9f9;
 }
 
+.cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.cadastro p {
+  margin-left: 100px;
+}
+
+span#create {
+  font-size: 66px;
+}
+
 a {
   text-decoration: none;
   color: #444;

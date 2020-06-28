@@ -6,9 +6,23 @@
 
     {% block content %}
 
+    <div  class="card cadastro">
+            <a href="/cadastro">
+                <div class="img-nome">
+                    <span id="create">&#43;</span>
+                    <h3>Cadastrar</h3>
+                </div>
+            </a>
+            <div>
+                <p>Cadastrar novo professor.</p>
+            </div>
+            
+            
+    </div>
+
     {% for professor in data %}
     
-        <div  class="card">
+        <div  class="card" >
             <a href={{"/professor/" + professor.id}}>
             <div class="img-nome">
                 <img src={{professor.img_url}} alt="professor" />
@@ -30,8 +44,11 @@
             </div>
             
         </div>
+
         
     {% endfor %}
+
+     
 
     </body>
     </html>
