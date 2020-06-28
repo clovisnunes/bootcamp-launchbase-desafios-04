@@ -1,0 +1,60 @@
+.card li {
+  list-style: none;
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.card {
+  width: 750px;
+  margin: 30px auto 0;
+  text-align: center;
+  box-shadow: rgba(0,0,0,0.8) 0 0 10px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px;
+  background: #f9f9f9;
+}
+
+a {
+  text-decoration: none;
+  color: #444;
+}
+
+.card:first-of-type {
+  margin-top: 50px
+}
+
+.card:last-of-type {
+  margin-bottom: 50px;
+}
+
+.img-nome {
+  width: 150px;
+}
+
+.card ul {
+  margin-top: 8px;
+  display: block;
+}
+
+.img-nome img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+
+.actions form {
+  display: inline;
+}
+
+.actions form button {
+  background: none;
+  border: none;
+}
+
+.actions a {
+  text-decoration: none;
+}
+

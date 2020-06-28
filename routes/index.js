@@ -5,6 +5,7 @@ const fs = require('fs');
 const utils = require('../controllers/utils');
 
 const { Validator } = require('node-input-validator');
+const { profile } = require('console');
 
 nunjucks.configure('views', { autoescape: true });
 
@@ -73,7 +74,24 @@ router.post('/professor', function(req, res) {
 
   fs.writeFileSync('./data/professors.json', jsonString);
 
-  res.send('Cadastrado');
+  res.redirect(`/professor/`);
+});
+
+router.get('/professor', function(req, res) {
+  const data = fs.readFileSync('./data/professors.json');
+  const profArray = JSON.parse(data);
+
+  const serialProfArray = profArray.map((prof, index) => {
+    return {
+      id: index,
+      nome: prof.nome,
+      acompanhamento: prof.area.split(',').map(elem => elem.trim()),
+      img_url: prof.img_url,
+    }
+    
+  });
+
+  res.render('listar.njk', {data: serialProfArray});
 });
 
 router.get('/professor/:id', function(req, res) {
