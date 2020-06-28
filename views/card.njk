@@ -9,7 +9,12 @@
         <div class="card">
             <div class="container">
                 <img src={{img_url}} alt="professor" />
-                <div class="bottom-right"><a href={{ "/editar/" + id }}>&#128393;</a></div>
+                <div class="bottom-right">
+                    <a href={{ "/editar/" + id }}>&#128393;</a>
+                    <form method="POST" action={{"/professor/" + id +  "?_method=DELETE"}}>
+                        <button type="submit">&#10060;</button>
+                    </form>
+                </div>
             </div>
             
             <h1>{{nome}} - {{idade}}</h1>

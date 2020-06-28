@@ -122,7 +122,7 @@ router.get('/editar/:id', function(req, res) {
   res.render('editar.njk', serialProf);
 });
 
-router.post('/professor/:id', function(req, res) {
+router.put('/professor/:id', function(req, res) {
   const v = new Validator(req.body, {
     img_url:'required|url',
     nome:   'required|string',
@@ -149,7 +149,7 @@ router.post('/professor/:id', function(req, res) {
   } = req.body;
 
   const data = fs.readFileSync('./data/professors.json');
-  const profArray = JSON.parse(data);
+  let profArray = JSON.parse(data);
 
   const professor = {
     img_url,
@@ -168,8 +168,25 @@ router.post('/professor/:id', function(req, res) {
 
   fs.writeFileSync('./data/professors.json', jsonString);
 
-  res.send('Alterado');
+  res.redirect(`/professor/${id}`);
 
+});
+
+router.delete('/professor/:id', function(req, res) {
+  const {id} = req.params;
+
+  const data = fs.readFileSync('./data/professors.json');
+  const profArray = JSON.parse(data);
+
+  const filteredProfArray = profArray.filter((prof, index) => {
+    if (index != id) return prof
+  });
+
+  const jsonString = JSON.stringify(filteredProfArray);
+
+  fs.writeFileSync('./data/professors.json', jsonString);
+
+  res.redirect(`/professor/0`);
 });
 
 module.exports = router;

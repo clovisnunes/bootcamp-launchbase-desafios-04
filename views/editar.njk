@@ -8,7 +8,7 @@
 
         <div class="form-container">
 
-            <form action={{ "/professor/" + id }} method="post">
+            <form action={{ "/professor/" + id + "?_method=PUT" }} method="post">
 
                 <h1>Editar professor</h1>
 
@@ -38,7 +38,7 @@
                         type="text" 
                         id="nome" 
                         name="nome"
-                        value={{nome}}
+                        value="{{nome}}"
                     />
                 </div>
 

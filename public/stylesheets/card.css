@@ -38,6 +38,15 @@
   font-weight: bold;
 }
 
+.bottom-right form {
+  display: inline;
+}
+
+.bottom-right form button {
+  background: none;
+  border: none;
+}
+
 .bott {
   display: flex;
   align-items: baseline;
