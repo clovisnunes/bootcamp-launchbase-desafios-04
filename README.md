@@ -20,11 +20,6 @@
 
 </p>
 
-<p align="center">
-  <a href="#rocket-desafios">Desafios</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#calendar-entrega">Entrega</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#memo-licença">Licença</a>
-</p>
 
 ## :rocket: Desafios
 
@@ -35,10 +30,6 @@
 - [HTTP: PUT e DELETE](desafios/04-5-put-delete-teacher.md) :heavy_check_mark:
 - [Listagem de professores](desafios/04-6-list-teachers.md) :heavy_check_mark:
 - [Estruturando estudantes](desafios/04-7-students.md)
-
-## :calendar: Entrega
-
-Esses desafios **não precisam ser entregues** e não receberão correção. Após concluí-los, adicionar esses códigos ao seu Github é uma boa forma de demonstrar seus conhecimentos para oportunidades futuras.
 
 
 ---
