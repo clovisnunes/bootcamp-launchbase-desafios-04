@@ -1,4 +1,4 @@
-{% extends "layout.njk" %}
+{% extends "./layout.njk" %}
 
     {% block css %}
         <link rel="stylesheet" href="/stylesheets/form.css">
@@ -8,9 +8,9 @@
 
         <div class="form-container">
 
-            <form action={{ "/professor/" + id + "?_method=PUT" }} method="post">
+            <form action={{ "/student/" + id + "?_method=PUT" }} method="post">
 
-                <h1>Editar professor</h1>
+                <h1>Editar estudante</h1>
 
                 <div class="field" id="id_oculto">
                     <label for="id">id</label>
@@ -43,6 +43,16 @@
                 </div>
 
                 <div class="field">
+                    <label for="email">E-mail</label>
+                    <input 
+                        type="email" 
+                        id="email" 
+                        name="email"
+                        value="{{email}}"
+                    />
+                </div>
+
+                <div class="field">
                     <label for="nasc">Data de nascimento</label>
                     <input 
                         type="date" 
@@ -53,40 +63,27 @@
                 </div>
 
                 <div class="field">
-                    <label for="escolaridade">Grau de escolaridade</label>
+                    <label for="escolaridade">Ano escolar</label>
                     <select name="escolaridade" id="escolaridade">
-                        <option value="0">Selecione o grau de escolaridade</option>
-                        <option value="1" {% if escolaridade == 1 %} selected="selected" {% endif %} >Ensino Médio Completo</option>
-                        <option value="2" {% if escolaridade == 2 %} selected="selected" {% endif %} >Ensino Superior Completo</option>
-                        <option value="3" {% if escolaridade == 3 %} selected="selected" {% endif %} >Mestrado</option>
-                        <option value="4" {% if escolaridade == 4 %} selected="selected" {% endif %} >Doutorado</option>
+                        <option value="0">Selecione o ano escolar</option>
+                        <option value="1" {% if escolaridade == 1 %} selected="selected" {% endif %} >5º ano do ensino fundamental</option>
+                        <option value="2" {% if escolaridade == 2 %} selected="selected" {% endif %} >6º ano do ensino fundamental</option>
+                        <option value="3" {% if escolaridade == 3 %} selected="selected" {% endif %} >7º ano do ensino fundamental</option>
+                        <option value="4" {% if escolaridade == 4 %} selected="selected" {% endif %} >8º ano do ensino fundamental</option>
+                        <option value="5" {% if escolaridade == 5 %} selected="selected" {% endif %} >9º ano do ensino fundamental</option>
+                        <option value="6" {% if escolaridade == 6 %} selected="selected" {% endif %} >1º ano do ensino médio</option>
+                        <option value="7" {% if escolaridade == 7 %} selected="selected" {% endif %} >2º ano do ensino médio</option>
+                        <option value="8" {% if escolaridade == 8 %} selected="selected" {% endif %} >3º ano do ensino médio</option>
                     </select>
                 </div>
 
-                <fieldset>
-                    <legend>
-                        <h2>Tipo de aula</h2>
-                    </legend>
-
-                    <div class="field-check">
-                        <div class="radio">
-                            <input type="radio" id="presencial" name="tipo" value="Presencial" {% if tipo == "Presencial" %} checked="checked" {% endif %}  />
-                            <label for="presencial">Presencial</label>
-                        </div>
-                        <div class="radio">
-                            <input type="radio" id="distancia" name="tipo" value="À distância" {% if tipo == "À distância" %} checked="checked" {% endif %} />
-                            <label for="distancia">À distância</label>
-                        </div>
-                    </div>
-                </fieldset>
-
                 <div class="field">
-                    <label for="area">Área de atuação</label>
+                    <label for="carga">Carga horária semanal</label>
                     <input 
-                        type="text" 
-                        id="area" 
-                        name="area"
-                        value={{acompanhamento}}
+                        type="number" 
+                        id="carga" 
+                        name="carga" 
+                        value={{carga}}
                     />
                 </div>
 

@@ -1,0 +1,108 @@
+{% extends "./layout.njk" %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/stylesheets/form.css">
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="form-container">
+
+            <form action={{ "/professor/" + id + "?_method=PUT" }} method="post">
+
+                <h1>Editar professor</h1>
+
+                <div class="field" id="id_oculto">
+                    <label for="id">id</label>
+                    <input 
+                        type="text" 
+                        id="id" 
+                        name="id"
+                        value={{id}}
+                    />
+                </div>
+
+                <div class="field">
+                    <label for="img_url">Avatar url</label>
+                    <input 
+                        type="text" 
+                        id="img_url" 
+                        name="img_url"
+                        value={{img_url}}
+                    />
+                </div>
+
+                <div class="field">
+                    <label for="nome">Nome completo</label>
+                    <input 
+                        type="text" 
+                        id="nome" 
+                        name="nome"
+                        value="{{nome}}"
+                    />
+                </div>
+
+                <div class="field">
+                    <label for="nasc">Data de nascimento</label>
+                    <input 
+                        type="date" 
+                        id="nasc" 
+                        name="nasc" 
+                        value={{nasc}}
+                    />
+                </div>
+
+                <div class="field">
+                    <label for="escolaridade">Grau de escolaridade</label>
+                    <select name="escolaridade" id="escolaridade">
+                        <option value="0">Selecione o grau de escolaridade</option>
+                        <option value="1" {% if escolaridade == 1 %} selected="selected" {% endif %} >Ensino Médio Completo</option>
+                        <option value="2" {% if escolaridade == 2 %} selected="selected" {% endif %} >Ensino Superior Completo</option>
+                        <option value="3" {% if escolaridade == 3 %} selected="selected" {% endif %} >Mestrado</option>
+                        <option value="4" {% if escolaridade == 4 %} selected="selected" {% endif %} >Doutorado</option>
+                    </select>
+                </div>
+
+                <fieldset>
+                    <legend>
+                        <h2>Tipo de aula</h2>
+                    </legend>
+
+                    <div class="field-check">
+                        <div class="radio">
+                            <input type="radio" id="presencial" name="tipo" value="Presencial" {% if tipo == "Presencial" %} checked="checked" {% endif %}  />
+                            <label for="presencial">Presencial</label>
+                        </div>
+                        <div class="radio">
+                            <input type="radio" id="distancia" name="tipo" value="À distância" {% if tipo == "À distância" %} checked="checked" {% endif %} />
+                            <label for="distancia">À distância</label>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <div class="field">
+                    <label for="area">Área de atuação</label>
+                    <input 
+                        type="text" 
+                        id="area" 
+                        name="area"
+                        value={{acompanhamento}}
+                    />
+                </div>
+
+                <button type="submit">
+                    Cadastrar
+                </button>
+            </form>
+
+        </div>
+
+
+    </body>
+    </html>
+    
+    
+    {% endblock %}
+
+
+    

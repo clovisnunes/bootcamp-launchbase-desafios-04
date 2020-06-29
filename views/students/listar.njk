@@ -1,4 +1,4 @@
-{% extends "layout.njk" %}
+{% extends "./layout.njk" %}
 
     {% block css %}
         <link rel="stylesheet" href="/stylesheets/list.css">
@@ -7,14 +7,14 @@
     {% block content %}
 
     <div  class="card cadastro">
-            <a href="/cadastro">
+            <a href="/student/cadastro">
                 <div class="img-nome">
                     <span id="create">&#43;</span>
                     <h3>Cadastrar</h3>
                 </div>
             </a>
             <div>
-                <p>Cadastrar novo professor.</p>
+                <p>Cadastrar novo estudante.</p>
             </div>
             
             
@@ -23,23 +23,22 @@
     {% for professor in data %}
     
         <div  class="card" >
-            <a href={{"/professor/" + professor.id}}>
+            <a href={{"/student/" + professor.id}}>
             <div class="img-nome">
-                <img src={{professor.img_url}} alt="professor" />
+                <img src={{professor.img_url}} alt="estudante" />
                 <h3>{{professor.nome}}</h3>
             </div>
             </a>
 
-            <ul>
-                {% for disc in professor.acompanhamento %}
-                    <li>&#128213; {{disc}}</li>
-                {% endfor %}
-            </ul>
+            <div>
+                <p>{{professor.escolaridade}}</p>
+                <p>{{professor.email}}</p>
+            </div>
             
             <div class="actions">
-                <a href={{ "/editar/" + professor.id }}>&#128393;</a>
-                <form method="POST" action={{"/professor/" + professor.id +  "?_method=DELETE"}}>
-                    <button type="submit">&#10060;</button>
+                <a href={{ "/student/editar/" + professor.id }}>&#128393;</a>
+                <form method="POST" action={{"/student/" + professor.id +  "?_method=DELETE"}}>
+                    <button class="del-button" type="submit">&#10060;</button>
                 </form>
             </div>
             
@@ -49,7 +48,7 @@
     {% endfor %}
 
      
-
+        <script src="/javascripts/confirm-del.js"></script>
     </body>
     </html>
     

@@ -2,16 +2,16 @@ const { Validator } = require('node-input-validator');
 const fs = require('fs');
 const utils = require('./utils');
 
-class TeachersController {
+class StudentsController {
 
     create(req, res) {
         const v = new Validator(req.body, {
             img_url:'required|url',
             nome:   'required|string',
+            email:   'required|email',
             nasc:   'required|date',
-            escolaridade: 'required|between:1,4',
-            tipo: 'required|in:distancia,presencial',
-            area: 'required|string',
+            escolaridade: 'required|between:1,8',
+            carga: 'required|number',
           });
         
           v.check().then((matched) => {
@@ -23,50 +23,43 @@ class TeachersController {
           const {
             img_url,
             nome,
+            email,
             nasc,
             escolaridade,
-            tipo,
-            area,
+            carga,
           } = req.body;
         
-          const dateCriacao = new Date();
-          const dateTimeFormat = new Intl.DateTimeFormat('en', { year: 'numeric', month: 'numeric', day: 'numeric' }) 
-          const [{ value: month },,{ value: day },,{ value: year }] = dateTimeFormat .formatToParts(dateCriacao ) 
-        
-          const dateCriacaoForm = `${day}/${month}/${year }`; 
-        
-          const professor = {
+          const student = {
             img_url,
             nome,
+            email,
             nasc,
             escolaridade,
-            tipo,
-            area,
-            dateCriacaoForm,
+            carga,
           };
         
           
-          const data = fs.readFileSync('./data/professors.json');
+          const data = fs.readFileSync('./data/students.json');
           const profArray = JSON.parse(data);
         
-          profArray.push(professor);
+          profArray.push(student);
         
           const jsonString = JSON.stringify(profArray);
         
-          fs.writeFileSync('./data/professors.json', jsonString);
+          fs.writeFileSync('./data/students.json', jsonString);
         
-          res.redirect(`/professor/`);
+          res.redirect(`/student/`);
     }
 
     update(req, res) {
         const v = new Validator(req.body, {
-            img_url:'required|url',
-            nome:   'required|string',
-            nasc:   'required|date',
-            escolaridade: 'required|between:1,4',
-            tipo: 'required|in:À distância,Presencial',
-            area: 'required|string',
-          });
+          img_url:'required|url',
+          nome:   'required|string',
+          email:   'required|email',
+          nasc:   'required|date',
+          escolaridade: 'required|between:1,8',
+          carga: 'required|number',
+        });
         
           v.check().then((matched) => {
             if (!matched) {
@@ -77,40 +70,39 @@ class TeachersController {
           const {
             img_url,
             nome,
+            email,
             nasc,
             escolaridade,
-            tipo,
-            area,
+            carga,
             id,
           } = req.body;
         
-          const data = fs.readFileSync('./data/professors.json');
+          const data = fs.readFileSync('./data/students.json');
           let profArray = JSON.parse(data);
         
-          const professor = {
+          const student = {
             img_url,
             nome,
+            email,
             nasc,
             escolaridade,
-            tipo,
-            area,
-            dateCriacaoForm: profArray[id].dateCriacaoForm,
+            carga,
           };
         
         
-          profArray[id] = professor;
+          profArray[id] = student;
         
           const jsonString = JSON.stringify(profArray);
         
-          fs.writeFileSync('./data/professors.json', jsonString);
+          fs.writeFileSync('./data/students.json', jsonString);
         
-          res.redirect(`/professor/${id}`);
+          res.redirect(`/student/${id}`);
     }
 
     remove(req, res) {
         const {id} = req.params;
 
-        const data = fs.readFileSync('./data/professors.json');
+        const data = fs.readFileSync('./data/students.json');
         const profArray = JSON.parse(data);
 
         const filteredProfArray = profArray.filter((prof, index) => {
@@ -119,15 +111,15 @@ class TeachersController {
 
         const jsonString = JSON.stringify(filteredProfArray);
 
-        fs.writeFileSync('./data/professors.json', jsonString);
+        fs.writeFileSync('./data/students.json', jsonString);
 
-        res.redirect(`/professor/`);
+        res.redirect(`/student/`);
     }
 
     show(req, res) {
         const {id} = req.params;
 
-        const data = fs.readFileSync('./data/professors.json');
+        const data = fs.readFileSync('./data/students.json');
         const profArray = JSON.parse(data);
 
         if(id > profArray.length - 1) {
@@ -137,34 +129,33 @@ class TeachersController {
         const prof = profArray[id];
 
         const serialProf = {
-            acompanhamento: prof.area.split(',').map(elem => elem.trim()),
             idade: utils.age(prof.nasc),
-            graduacao: utils.graduation(prof.escolaridade),
+            graduacao: utils.grade(prof.escolaridade),
             id,
             ...prof,
         }
 
-        res.render('./teachers/card.njk', serialProf);
+        res.render('./students/card.njk', serialProf);
     }
 
     index(req, res) {
-        const data = fs.readFileSync('./data/professors.json');
+        const data = fs.readFileSync('./data/students.json');
         const profArray = JSON.parse(data);
 
         const serialProfArray = profArray.map((prof, index) => {
             return {
-            id: index,
-            nome: prof.nome,
-            acompanhamento: prof.area.split(',').map(elem => elem.trim()),
-            img_url: prof.img_url,
+              id: index,
+              img_url: prof.img_url,
+              nome: prof.nome,
+              email: prof.email,
+              escolaridade: utils.grade(prof.escolaridade),
             }
             
         });
 
-        res.render('./teachers/listar.njk', {data: serialProfArray});
-
+        res.render('./students/listar.njk', {data: serialProfArray});
     }
 
 }
 
-module.exports = TeachersController;
+module.exports = StudentsController;

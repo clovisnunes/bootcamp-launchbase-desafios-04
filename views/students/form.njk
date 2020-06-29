@@ -1,0 +1,70 @@
+{% extends "./layout.njk" %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/stylesheets/form.css">
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="form-container">
+
+            <form action="/student" method="post">
+
+                <h1>Cadastro do estudante</h1>
+
+                <div class="field">
+                    <label for="img_url">Avatar url</label>
+                    <input type="text" id="img_url" name="img_url" />
+                </div>
+
+                <div class="field">
+                    <label for="nome">Nome completo</label>
+                    <input type="text" id="nome" name="nome" />
+                </div>
+
+                <div class="field">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" name="email" />
+                </div>
+
+                <div class="field">
+                    <label for="nasc">Data de nascimento</label>
+                    <input type="date" id="nasc" name="nasc" />
+                </div>
+
+                <div class="field">
+                    <label for="escolaridade">Ano escolar</label>
+                    <select name="escolaridade" id="escolaridade">
+                        <option value="0">Selecione o ano escolar</option>
+                        <option value="1">5º ano do ensino fundamental</option>
+                        <option value="2">6º ano do ensino fundamental</option>
+                        <option value="3">7º ano do ensino fundamental</option>
+                        <option value="4">8º ano do ensino fundamental</option>
+                        <option value="5">9º ano do ensino fundamental</option>
+                        <option value="6">1º ano do ensino médio</option>
+                        <option value="7">2º ano do ensino médio</option>
+                        <option value="8">3º ano do ensino médio</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="carga">Carga horária semanal</label>
+                    <input type="number" id="carga" name="carga" />
+                </div>
+
+                <button type="submit">
+                    Cadastrar
+                </button>
+            </form>
+
+        </div>
+
+
+    </body>
+    </html>
+    
+    
+    {% endblock %}
+
+
+    

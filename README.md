@@ -29,7 +29,7 @@
 - [Apresentação, edição e formatação dos dados de um professor](desafios/04-4-show-edit-format-teacher.md) :heavy_check_mark:
 - [HTTP: PUT e DELETE](desafios/04-5-put-delete-teacher.md) :heavy_check_mark:
 - [Listagem de professores](desafios/04-6-list-teachers.md) :heavy_check_mark:
-- [Estruturando estudantes](desafios/04-7-students.md)
+- [Estruturando estudantes](desafios/04-7-students.md) :heavy_check_mark:
 
 
 ---

@@ -35,6 +35,7 @@
 }
 
 .form-container form .field input[type=text],
+.form-container form .field input[type=email],
 .form-container form .field input[type=number],
 .form-container form .field input[type=date] {
     flex: 1;

@@ -1,4 +1,4 @@
-{% extends "layout.njk" %}
+{% extends "./layout.njk" %}
 
     {% block css %}
         <link rel="stylesheet" href="/stylesheets/card.css">
@@ -10,9 +10,9 @@
             <div class="container">
                 <img src={{img_url}} alt="professor" />
                 <div class="bottom-right">
-                    <a href={{ "/editar/" + id }}>&#128393;</a>
+                    <a href={{ "/professor/editar/" + id }}>&#128393;</a>
                     <form method="POST" action={{"/professor/" + id +  "?_method=DELETE"}}>
-                        <button type="submit">&#10060;</button>
+                        <button class="del-button" type="submit">&#10060;</button>
                     </form>
                 </div>
             </div>
@@ -38,6 +38,7 @@
             </div>
         </div>
 
+        <script src="/javascripts/confirm-del.js"></script>
     </body>
     </html>
     

@@ -1,0 +1,43 @@
+{% extends "./layout.njk" %}
+
+    {% block css %}
+        <link rel="stylesheet" href="/stylesheets/card.css">
+    {% endblock %}
+
+    {% block content %}
+
+        <div class="card">
+            <div class="container">
+                <img src={{img_url}} alt="student" />
+                <div class="bottom-right">
+                    <a href={{ "/student/editar/" + id }}>&#128393;</a>
+                    <form method="POST" action={{"/student/" + id +  "?_method=DELETE"}}>
+                        <button class="del-button" type="submit">&#10060;</button>
+                    </form>
+                </div>
+            </div>
+            
+            <h1>{{nome}} - {{idade}}</h1>
+            <p>{{email}}</p>
+            <div class="bott">
+                <div class="bott-item">
+                    Carga horária: <br>{{carga}}
+                </div>
+
+                
+
+                <div class="bott-item">
+                    {{graduacao}}
+                </div>
+            </div>
+        </div>
+
+        <script src="/javascripts/confirm-del.js"></script>
+    </body>
+    </html>
+    
+    
+    {% endblock %}
+
+
+    
